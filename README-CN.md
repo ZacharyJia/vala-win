@@ -21,3 +21,8 @@ English version : [English](https://github.com/ZacharyJia/vala-win/blob/master/R
 4. 将Vala压缩包解压到本仓库下. 解压完成后，你应该能看到本仓库的几个文件应该在Vala源代码的根目录下。
 5. 在当前目录下创建build文件夹，并生成cmake文件: `mkdir build && cd build && cmake ..`
 6. 使用CMake进行编译 (`cmake --build . --config Release`), 或者用 Visual Studio 打开build文件夹下生成的 `sln` 文件进行手动编译。
+
+### 已知问题：
+目前`valac`不能自动找到内置的vapi文件，因为内置vapi文件的位置是在编译的时候在`config.h`（`PACKAGE_DATADIR`宏）中指定的。目前我将这个值留空了，你可以使用 `valac --vapidir=[vapi files dir] example.vala`这样的命令来手动指定vapi文件所在的文件夹。如果你使用[Meson](https://github.com/mesonbuild/meson)作为编译工具的话，你可以设置一个名为`VALAFLAGS`的环境变量，将它的值设为`--vapidir=[vapi files dir]`，meson编译时会自动使用它。
+
+如果你对以上问题有解决方案，欢迎提交PR或者Issue。

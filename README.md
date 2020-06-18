@@ -22,3 +22,9 @@ If you are just looking for a native Vala compiler without msys2 or something el
 4. Extract the vala source tarball into this repository. Therefore all files in this repository will be in the root directory of Vala's source.
 5. Create a `build` directory and generate cmake files: `mkdir build && cd build && cmake ..`
 6. Build using cmake (`cmake --build . --config Release`), or open the `sln` file with visual studio for manually building.
+
+
+### Known Issue(s):
+Currently the `valac` cannot find the built-in vapi files autmatically, since its location is set in the `config.h`(the `PACKAGE_DATADIR` macro) when compile. Now we leave it empty and you can use `valac --vapidir=[vapi files dir] example.vala` to specify it manually. If you are using [meson](https://github.com/mesonbuild/meson) for building your Vala project, you can set a environmnet variable named `VALAFLAGS`, whose value shoudl be `--vapidir=[vapi files dir]`, and meson will use it automatically.
+
+If you have any solutions to the issue(s), PR or Issue is welcomed.
