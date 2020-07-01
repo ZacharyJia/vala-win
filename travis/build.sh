@@ -3,7 +3,7 @@
 set -euxo pipefail
 
 curl --retry 5 --connect-timeout 30 --location --remote-header-name --output vala.tar.xz "$VALA_URL"
-tar -xvf vala.tar.xz -C ./
+arc unarchive vala.tar.xz ./
 ls
 mkdir -p build && cd build
 if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then
