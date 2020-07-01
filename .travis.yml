@@ -15,7 +15,7 @@ matrix:
     - VCPKG_LIBS="glib"
     cache:
       directories:
-        - c:\vcpkg
+        - /c/vcpkg
 install: ./travis/install.sh
 script: ./travis/build.sh
 # after_success: ./travis/upload.sh
@@ -24,7 +24,7 @@ before_deploy:
 deploy:
   provider: releases
   api_key: $GITHUB_API_KEY
-  file: "vala-prebuilt-${VALAC_VERSION}-x64.zip"
+  file: "./vala-prebuilt-$VALAC_VERSION-x64.zip"
   skip_cleanup: true
   draft: true
   on:
