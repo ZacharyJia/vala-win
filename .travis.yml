@@ -19,6 +19,7 @@ matrix:
     - VALA_URL=http://ftp.acc.umu.se/pub/gnome/sources/vala/0.48/vala-0.48.7.tar.xz
 install: ./travis/install.sh
 script: ./travis/build.sh
+after_success: ./travis/upload.sh
 # before_deploy: ./travis/predeploy.sh
 # deploy:
 # - provider: script
