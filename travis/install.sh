@@ -11,8 +11,8 @@ if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then
 	git clone --depth=1 https://github.com/Microsoft/vcpkg.git
 	cd "$VCPKG_ROOT"
 	./bootstrap-vcpkg.bat
-	./vcpkg.exe integrate install
 	./vcpkg.exe install glib
+	./vcpkg.exe integrate install
 else
 	echo "not in this os"
 fi
