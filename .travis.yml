@@ -1,0 +1,38 @@
+language: cpp
+git:
+  depth: 1
+env:
+  global:
+  - BUILD_CONFIG=Release
+  - MSBUILD_PATH="/c/Program Files (x86)/Microsoft Visual Studio/2017/BuildTools/MSBuild/15.0/Bin"
+matrix:
+  include:
+  - name: "Windows 10"
+    os: windows
+    env:
+    - VCPKG_ROOT=/c/vcpkg
+    - VCPKG_DEFAULT_TRIPLET=x64-windows
+    - VCPKG_LIBS="glib"
+    cache:
+      directories:
+        - /c/vcpkg
+install: ./travis/install.sh
+script: ./travis/build.sh
+after_success: ./travis/upload.sh
+
+# before_deploy: ./travis/predeploy.sh
+# deploy:
+# - provider: script
+#   skip_cleanup: true
+#   script: bash ./travis/deploy.sh
+#   on:
+#     repo: edo9300/ygopro-core
+#- provider: releases
+#  api_key: $OAUTH_TOKEN
+#  overwrite: true
+#  skip_cleanup: true
+#  file:
+#  - ocgcore-$TRAVIS_OS_NAME.zip
+#  - ocgcore-$TRAVIS_OS_NAME.tar.gz
+#  on:
+#    tags: true
