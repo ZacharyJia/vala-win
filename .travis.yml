@@ -13,9 +13,23 @@ matrix:
     - VCPKG_ROOT=/c/vcpkg
     - VCPKG_DEFAULT_TRIPLET=x64-windows
     - VCPKG_LIBS="glib"
+    cache:
+      directories:
+        - c:\vcpkg
 install: ./travis/install.sh
 script: ./travis/build.sh
 after_success: ./travis/upload.sh
+before_deploy:
+  - source ./env
+deploy:
+  provider: releases
+  api_key: $GITHUB_API_KEY
+  file: "vala-prebuilt-${VALAC_VERSION}-x64.zip"
+  skip_cleanup: true
+  draft: true
+  on:
+    tags: true
+
 # before_deploy: ./travis/predeploy.sh
 # deploy:
 # - provider: script

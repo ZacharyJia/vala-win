@@ -8,9 +8,13 @@ CXX=${CXX:-g++}
 if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then
 	choco install archiver
 	cd /c/
-	git clone --depth=1 https://github.com/Microsoft/vcpkg.git
-	cd "$VCPKG_ROOT"
-	./bootstrap-vcpkg.bat
+	if [ -f "$VCPKG_ROOT/vcpkg.exe" ];then
+		echo "cache hit, will not install vcpkg again"
+	else
+		git clone --depth=1 https://github.com/Microsoft/vcpkg.git
+		cd "$VCPKG_ROOT"
+		./bootstrap-vcpkg.bat
+	fi
 	./vcpkg.exe install glib
 	./vcpkg.exe integrate install
 else
