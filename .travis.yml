@@ -5,8 +5,6 @@ env:
   global:
   - BUILD_CONFIG=Release
   - MSBUILD_PATH="/c/Program Files (x86)/Microsoft Visual Studio/2017/BuildTools/MSBuild/15.0/Bin"
-  - DEPLOY_DIR=ocgcore
-  - DEPLOY_BRANCH=travis-core-$TRAVIS_OS_NAME
 matrix:
   include:
   - name: "Windows 10"
@@ -15,8 +13,6 @@ matrix:
     - VCPKG_ROOT=/c/vcpkg
     - VCPKG_DEFAULT_TRIPLET=x64-windows
     - VCPKG_LIBS="glib"
-    - VCPKG_CACHE_ZIP_URL=https://github.com/kevinlul/edopro-vcpkg-cache/raw/master/vcpkg-windows.zip
-    - VALA_URL=http://ftp.acc.umu.se/pub/gnome/sources/vala/0.48/vala-0.48.7.tar.xz
 install: ./travis/install.sh
 script: ./travis/build.sh
 after_success: ./travis/upload.sh
