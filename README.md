@@ -28,3 +28,7 @@ If you are just looking for a native Vala compiler without msys2 or something el
 Currently the `valac` cannot find the built-in vapi files autmatically, since its location is set in the `config.h`(the `PACKAGE_DATADIR` macro) when compile. Now we leave it empty and you can use `valac --vapidir=[vapi files dir] example.vala` to specify it manually. If you are using [meson](https://github.com/mesonbuild/meson) for building your Vala project, you can set a environmnet variable named `VALAFLAGS`, whose value shoudl be `--vapidir=[vapi files dir]`, and meson will use it automatically.
 
 If you have any solutions to the issue(s), PR or Issue is welcomed.
+
+### ChangeLog:
+
+- 2020/07/01 bump to version 0.48.7
