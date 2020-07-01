@@ -12,5 +12,5 @@ if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then
 	unzip -uo installed.zip > /dev/null
 	./vcpkg.exe integrate install
 else
-
+	echo "not in this os"
 fi
