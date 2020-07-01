@@ -10,5 +10,3 @@ if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then
 else
 	echo "not in this os"
 fi
-
-

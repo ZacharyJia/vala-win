@@ -18,18 +18,7 @@ matrix:
         - /c/vcpkg
 install: ./travis/install.sh
 script: ./travis/build.sh
-# after_success: ./travis/upload.sh
-before_deploy:
-  - source ./.env
-deploy:
-  provider: releases
-  api_key: $GITHUB_API_KEY
-  file: 
-    - vala-prebuilt-$VALAC_VERSION-x64.zip
-  file_glob: false
-  draft: true
-  on:
-    tags: true
+after_success: ./travis/upload.sh
 
 # before_deploy: ./travis/predeploy.sh
 # deploy:
