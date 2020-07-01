@@ -12,6 +12,7 @@ if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then
 	curl --retry 5 --connect-timeout 30 --location --remote-header-name --output installed.zip "$VCPKG_CACHE_ZIP_URL"
 	unzip -uo installed.zip > /dev/null
 	./vcpkg.exe integrate install
+	./vcpkg.exe install glib:$VCPKG_DEFAULT_TRIPLET
 else
 	echo "not in this os"
 fi
