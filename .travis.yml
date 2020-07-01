@@ -13,7 +13,7 @@ matrix:
     os: windows
     env:
     - VCPKG_ROOT=/c/vcpkg
-    - VCPKG_DEFAULT_TRIPLET=x86-windows
+    - VCPKG_DEFAULT_TRIPLET=x64-windows
     - VCPKG_LIBS="glib"
     - VCPKG_CACHE_ZIP_URL=https://github.com/kevinlul/edopro-vcpkg-cache/raw/master/vcpkg-windows.zip
     - VALA_URL=http://ftp.acc.umu.se/pub/gnome/sources/vala/0.48/vala-0.48.7.tar.xz
