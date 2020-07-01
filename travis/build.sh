@@ -8,7 +8,7 @@ mv vala-0.48.7/* ./
 ls
 mkdir -p build && cd build
 if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then
-	cmake .. -DCMAKE_TOOLCHAIN_FILE=$VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake \
+	cmake .. -DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake \
         -DVCPKG_TARGET_TRIPLET=$VCPKG_DEFAULT_TRIPLET \
         -DCMAKE_GENERATOR_PLATFORM=x64 \
         -DCMAKE_BUILD_TYPE=$BUILD_CONFIG
