@@ -2,6 +2,9 @@
 
 set -euxo pipefail
 
+curl --retry 5 --connect-timeout 30 --location --remote-header-name --output vala.tar.xz "$VALA_URL"
+tar -xvf vala.tar.xz -C ./
+ls
 mkdir -p build && cd build
 if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then
 	cmake .. -DCMAKE_TOOLCHAIN_FILE=$VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake \
