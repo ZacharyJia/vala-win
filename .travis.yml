@@ -1,0 +1,36 @@
+language: cpp
+git:
+  depth: 1
+env:
+  global:
+  - BUILD_CONFIG=Release
+  - MSBUILD_PATH="/c/Program Files (x86)/Microsoft Visual Studio/2017/BuildTools/MSBuild/15.0/Bin"
+  - DEPLOY_DIR=ocgcore
+  - DEPLOY_BRANCH=travis-core-$TRAVIS_OS_NAME
+matrix:
+  include:
+  - name: "Windows 10"
+    os: windows
+    env:
+    - VCPKG_ROOT=/c/vcpkg
+    - VCPKG_DEFAULT_TRIPLET=x86-windows-static
+    - VCPKG_LIBS="lua[cpp]"
+    - VCPKG_CACHE_ZIP_URL=https://github.com/kevinlul/edopro-vcpkg-cache/raw/master/vcpkg-windows.zip
+install: ./travis/install.sh
+script: ./travis/build.sh
+# before_deploy: ./travis/predeploy.sh
+# deploy:
+# - provider: script
+#   skip_cleanup: true
+#   script: bash ./travis/deploy.sh
+#   on:
+#     repo: edo9300/ygopro-core
+#- provider: releases
+#  api_key: $OAUTH_TOKEN
+#  overwrite: true
+#  skip_cleanup: true
+#  file:
+#  - ocgcore-$TRAVIS_OS_NAME.zip
+#  - ocgcore-$TRAVIS_OS_NAME.tar.gz
+#  on:
+#    tags: true
