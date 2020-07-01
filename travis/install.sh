@@ -10,6 +10,7 @@ if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then
 	cd /c/
 	if [ -f "$VCPKG_ROOT/vcpkg.exe" ];then
 		echo "cache hit, will not install vcpkg again"
+		cd "$VCPKG_ROOT"
 	else
 		git clone --depth=1 https://github.com/Microsoft/vcpkg.git
 		cd "$VCPKG_ROOT"

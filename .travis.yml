@@ -25,7 +25,7 @@ deploy:
   provider: releases
   api_key: $GITHUB_API_KEY
   file: "./vala-prebuilt-$VALAC_VERSION-x64.zip"
-  skip_cleanup: true
+  file_glob: false
   draft: true
   on:
     tags: true
