@@ -18,9 +18,9 @@ matrix:
         - c:\vcpkg
 install: ./travis/install.sh
 script: ./travis/build.sh
-after_success: ./travis/upload.sh
+# after_success: ./travis/upload.sh
 before_deploy:
-  - source ./env
+  - source ./.env
 deploy:
   provider: releases
   api_key: $GITHUB_API_KEY
